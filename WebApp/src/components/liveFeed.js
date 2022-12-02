@@ -1,7 +1,5 @@
 import { useRef } from "react"
 
-
-
 export default function LiveFeed() {
   const videoRef = useRef(null)
 
