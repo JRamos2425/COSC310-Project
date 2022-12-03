@@ -25,12 +25,53 @@ body {
   --medium: 0.2s;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
 .full {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 20px;
+  height: 20px;
+  color: var(--red);
+  display: none;
+}
+
+.error {
+  .error-msg {
+    display: block;
+  }
+  .input-data{
+    .error-icon {
+      display: block;
+    }
+  }
+}
 
 .sidebar {
   transition: 0.2s;
@@ -354,3 +395,89 @@ span {
 .above {
   z-index: 20;
 }
+
+.input-data{
+  margin-top: 10px;
+  height: 40px;
+  width: 100%;
+  position: relative;
+
+  input {
+    padding: 0;
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--medium-grey);
+    color: var(--black);
+    font-weight: 600;
+    font-family: var(--main-font);
+    transition: 0.3s ease;
+  }
+  input:focus ~ label
+  {
+    transform: translateY(-30px);
+    font-size: 12px;
+    color: var(--primary);
+  }
+  input:valid ~ label
+  {
+    transform: translateY(-30px);
+    font-size: 12px;
+  }
+
+  label {
+    font-size: 20px;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    color: var(--darkest-grey);
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .underline {
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    width: 100%;
+  }
+
+  .underline::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  input:focus ~ .underline::before
+  {
+    transform: scaleX(1);
+    color: var(--primary);
+  }
+}
+
+.account {
+  width: 500px;
+  height: fit-content;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px 30px;
+
+  p {
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+  }
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

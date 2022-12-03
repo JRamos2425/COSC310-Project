@@ -10,6 +10,7 @@ import "../scss/main.scss"
 import SidebarItem from "./sidebarItem.js";
 import DBStorage from "./dbstorage.js"
 import LiveFeed from "./liveFeed.js"
+import Notifications from "./notifications.js";
 
 export default function Sidebar() {
     const strokeWidth = "0.025rem"
@@ -53,12 +54,12 @@ export default function Sidebar() {
                     dest={"/settings"}
                     icon={<BsGear className="icon icon-size-1" color="var(--off-white)" strokeWidth={strokeWidth}/>}
                     title={"Settings"}
-                  />
+                  /> */}
                   <SidebarItem 
                     dest={"/user"}
                     icon={<BiUser className="icon icon-size-1" color="var(--off-white)" strokeWidth={strokeWidth}/>}
                     title={"User Profile"}
-                  /> */}
+                  />
                 </ul>
               </div>
             </aside>
@@ -66,6 +67,7 @@ export default function Sidebar() {
               <Routes>
                 <Route path={"/"} element={<LiveFeed/>}/>
                 <Route path={"/storage"} element={<DBStorage/>}/>
+                <Route path={"/user"} element={<Notifications/>}/>
               </Routes>
             </div>
         </div>
